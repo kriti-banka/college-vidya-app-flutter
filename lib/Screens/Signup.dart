@@ -62,21 +62,6 @@ class _signupState extends State<signup> {
                 )
                 ),
 
-                SizedBox(height: 10,),
-
-                //CONFIRM PASSWORD
-                SizedBox(width: 350,child: TextField(
-                  decoration: InputDecoration(
-                    filled: true,
-                    fillColor: Color(0xFFf3f3f3),
-                    // prefixIcon: Icon(Icons.email_outlined),
-                    labelText: 'Confirm Password',
-                    suffixIcon: Icon(CupertinoIcons.eye_slash_fill),
-                    border: OutlineInputBorder(borderRadius: BorderRadius.circular(30),
-                        borderSide: BorderSide.none),
-                  ),
-                )
-                ),
 
                 SizedBox(height: 30,),
 
@@ -88,7 +73,7 @@ class _signupState extends State<signup> {
                       fontWeight: FontWeight.bold,
                       fontSize: 20),),
                   onPressed: (){
-                    Navigator.pushNamed(context,'/signupbutton');
+                    Navigator.pushNamed(context,'/completeprofile');
                   },
                   style: ElevatedButton.styleFrom(
                       backgroundColor: Color(0xff001149),
@@ -112,7 +97,7 @@ class _signupState extends State<signup> {
                         ),
                         GestureDetector(
                           onTap: (){
-                            Navigator.pushNamed(context,'/login text');
+                            Navigator.pushNamed(context,'/signin');
                           },
                           child: Text('login',style: TextStyle(
                               color: Colors.red[700],fontSize: 15,fontWeight: FontWeight.w500

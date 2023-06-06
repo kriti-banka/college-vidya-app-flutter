@@ -13,9 +13,10 @@ class _searchState extends State<search> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.white,
+        backgroundColor: Colors.transparent,
+        elevation: 0,
         leading: IconButton(onPressed: (){
-          Navigator.pushNamed(context, "/login");
+          Navigator.pushNamed(context, "/home");
         },icon: Icon(CupertinoIcons.back,color: Colors.black,),),
         // leading: Icon(CupertinoIcons.back,color: Colors.black,),
       ),
@@ -57,30 +58,7 @@ class _searchState extends State<search> {
             ],
           ),
         )
-      // Container(height: 55,child: SizedBox(width: 340,
-      //   child: Padding(
-      //     padding: const EdgeInsets.fromLTRB(0,7,0,0),
-      //
-      //     //TEXT FIELD AND ICON
-      //     child: TextField(
-      //
-      //       style: TextStyle(color: Colors.white),
-      //       onChanged:(value){},
-      //       onSubmitted: (value){},
-      //       decoration: InputDecoration(
-      //           filled: true,fillColor: Colors.grey,
-      //           suffixIcon: Icon(CupertinoIcons.search_circle_fill,color: Colors.white,size: 47,),
-      //           hintText: 'Type here',
-      //           hintStyle: TextStyle(fontSize: 13,color: Colors.white),
-      //
-      //
-      //           border: OutlineInputBorder(
-      //               borderRadius: BorderRadius.all(Radius.circular(100)),
-      //               borderSide: BorderSide.none
-      //           )),
-      //     ),
-      //   ),
-      // ),),
+
     );
   }
 }
