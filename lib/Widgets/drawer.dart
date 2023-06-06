@@ -14,18 +14,23 @@ Widget myDrawer(BuildContext context){
           child: Row(mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [Padding(
               padding: const EdgeInsets.fromLTRB(0,70,0,0),
-              child: Column(crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  CircleAvatar(),
-                  SizedBox(height: 10,),
-                  Text('Avatar Name',style: TextStyle(color: Colors.white),),
-                  Text("Avatar@gmail.com",style: TextStyle(color: Colors.white),)
-                ],
+              child: Container(
+                child: Column(crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    CircleAvatar(),
+                    SizedBox(height: 10,),
+                    Text('Avatar Name',style: TextStyle(color: Colors.white),),
+                    Text("Avatar@gmail.com",style: TextStyle(color: Colors.white),)
+                  ],
+                ),
               ),
             ),
-            GestureDetector(
-              onTap: (){},
-            child: Text("Login",style: TextStyle(color: Colors.white),),)],
+            Container(child: Row(
+              children: [IconButton(onPressed: (){}, icon: Icon(Icons.toggle_off_outlined,color: Colors.white,)),
+                Text("Theme",style: TextStyle(color: Colors.white),)],
+            ),)
+
+            ],
           ),
       )),
 
@@ -41,13 +46,13 @@ Widget myDrawer(BuildContext context){
                   title: Text("Search university in 2 minutes",
                     style: TextStyle(color: Colors.white),),
                   onTap: (){
-                    Navigator.pushNamed(context, '/suggest uni');
+                    Navigator.pushNamed(context, '/suggest');
                   },
                 ),
 
                 ListTile(
                   leading: Icon(CupertinoIcons.building_2_fill,color: Colors.white,),
-                  title: Text("Search by University",
+                  title: Text("Search by Courses",
                     style: TextStyle(color: Colors.white),),
                   onTap: (){},
                 ),
@@ -101,7 +106,7 @@ Widget myDrawer(BuildContext context){
               title: Text("Logout",style: TextStyle(color: Colors.white,
                   fontSize: 20,fontWeight: FontWeight.bold),),
              onTap: (){
-                Navigator.pushNamed(context, '/login text');
+                Navigator.pushNamed(context, '/signin');
              },
             )
           ))

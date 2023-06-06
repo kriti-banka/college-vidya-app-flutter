@@ -5,7 +5,7 @@ import 'package:collegevidya/Screens/completeprofile.dart';
 import 'package:flutter/material.dart';
 import 'Screens/Home.dart';
 import 'Screens/search.dart';
-import 'Screens/searchuniversity.dart';
+import 'Screens/Suggestin2min.dart';
 
 void main(){
   runApp(
@@ -13,12 +13,12 @@ void main(){
       debugShowCheckedModeBanner: false,
       home: Splash(),
       routes: {
-        "/login" : (context) => home(),
-        "/Sign up Text": (context) => signup(),
-        "/signupbutton": (context) => completeprofile(),
-        "/login text": (context) => signin(),
+        "/home" : (context) => home(),
+        "/Signup": (context) => signup(),
+        "/completeprofile": (context) => completeprofile(),
+        "/signin": (context) => signin(),
         "/search": (context) => search(),
-        "/suggest uni": (context) => suggestuni(),
+        "/suggest": (context) => suggest(),
       },
     ),
   );
