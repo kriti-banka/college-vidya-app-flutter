@@ -21,122 +21,204 @@ class _homeState extends State<home> {
         elevation: 0,
         shadowColor: Colors.white,
         actions: [
-          IconButton(onPressed: (){
-            Navigator.pushNamed(context, "/search");
-          }, icon: Icon(Icons.search,color: Colors.black,)),
-
-          IconButton(onPressed: (){}, icon: Icon(Icons.notification_add,color: Colors.black,)),
+          IconButton(
+              onPressed: () {
+                Navigator.pushNamed(context, "/search");
+              },
+              icon: Icon(
+                Icons.search,
+                color: Colors.black,
+              )),
+          IconButton(
+              onPressed: () {},
+              icon: Icon(
+                Icons.notification_add,
+                color: Colors.black,
+              )),
         ],
       ),
       extendBodyBehindAppBar: true,
-
       drawer: myDrawer(context),
-
       bottomNavigationBar: BottomNavigation(),
-
       body: Stack(
-          children: [
+        children: [
+          //CONTAINER ROTATE
           Transform.rotate(
-                angle: -0.38,
-                alignment: Alignment.centerLeft,
-
-              child: Container(
-                child: Text('.'),
-                width: 700,height: 450,
-                decoration: BoxDecoration(
+            angle: -0.38,
+            alignment: Alignment.centerLeft,
+            child: Container(
+              child: Text(''),
+              width: 700,
+              height: 450,
+              decoration: BoxDecoration(
                   color: Color(0xff698BFB).withOpacity(0.3),
-                  borderRadius: BorderRadius.all(Radius.circular(30))
-                ),
-              ),
-              ),
+                  borderRadius: BorderRadius.all(Radius.circular(30))),
+            ),
+          ),
 
-            Padding(
-              padding: const EdgeInsets.only(top: 80,left: 30),
-              child: SingleChildScrollView(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
+          //ALL CONTENT IN SINGLECHILDSCROLLVIEW
+          Container(
+            margin: EdgeInsets.only(top: 90),
+            child: SingleChildScrollView(
+              child: Column(
+                // crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
 
-                    Padding(
-                      padding: const EdgeInsets.only(left: 10),
-                      child: Text('Hi User!'),
+                  //USER NAME
+                  Container(
+                    margin: EdgeInsets.only(left: 45),
+                    child: Text(
+                      'Hi User!',
                     ),
+                    alignment: Alignment.topLeft,
+                  ),
 
-                    SizedBox(height: 10,),
+                  SizedBox(
+                    height: 10,
+                  ),
 
-                    Container(height: 170,width: 340,
-                        decoration: BoxDecoration(color: Colors.blue,
-                            borderRadius: BorderRadius.all(Radius.circular(30)))
-                    ),
+                  //BANNER
+                  Container(
+                      height: 170,
+                      width: 340,
+                      decoration: BoxDecoration(
+                          color: Colors.blue,
+                          borderRadius: BorderRadius.all(Radius.circular(30)))),
 
-                    SizedBox(width: 330,height: 70,
-                      child: Center(
+                  SizedBox(
+                    height: 10,
+                  ),
+
+                  //SUGGEST ME IN TWO MINUTES
+                  Center(
+                    child: ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                            backgroundColor: Colors.white,
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(20))),
+                        onPressed: () {
+                          Navigator.pushNamed(context, '/suggest');
+                        },
+                        child: Text(
+                          "Suggest University in 2 minutes",
+                          style: TextStyle(color: Colors.blue),
+                        )),
+                  ),
+
+                  SizedBox(
+                    height: 20,
+                  ),
+
+                  //DEGREE ROW
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      //UG COURSE BUTTON
+                      SizedBox(
+                        width: 90,
+                        height: 90,
                         child: ElevatedButton(
-                            style: ElevatedButton.styleFrom(backgroundColor: Colors.white,
-                                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20))),
-                            onPressed: (){
-                              Navigator.pushNamed(context, '/suggest');
-                            },
-                            child: Text("Suggest University in 2 minutes",
-                            style: TextStyle(color: Colors.blue),)),
+                          onPressed: () {
+                            Navigator.pushNamed(context, '/ugcourses');
+                          },
+                          child: Text(
+                            "UG Courses",
+                            style: TextStyle(color: Colors.black,fontSize: 13),
+                            textAlign: TextAlign.center,
+                          ),
+                          style: ElevatedButton.styleFrom(
+                              backgroundColor: Colors.white,
+                              shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(10))),
+                        ),
                       ),
-                    )
-                  ],
-                ),
+
+                      //PG COURSE BUTTON
+                      SizedBox(
+                        width: 90,
+                        height: 90,
+                        child: ElevatedButton(
+                          onPressed: () {},
+                          child: Text(
+                            "PG Courses",
+                            style: TextStyle(color: Colors.black,fontSize: 13),
+                            textAlign: TextAlign.center,
+                          ),
+                          style: ElevatedButton.styleFrom(
+                              backgroundColor: Colors.white,
+                              shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(10))),
+                        ),
+                      ),
+
+                      //EXECUTIVE EDUCATION BUTTON
+                      SizedBox(
+                        width: 90,
+                        height: 90,
+                        child: ElevatedButton(
+                          onPressed: () {},
+                          child: Text(
+                            "Executive Education",
+                            style: TextStyle(color: Colors.black, fontSize: 13),
+                            textAlign: TextAlign.center,
+                          ),
+                          style: ElevatedButton.styleFrom(
+                              backgroundColor: Colors.white,
+                              shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(10))),
+                        ),
+                      ),
+
+                      //SKILLING AND CERTIFICATE
+                      SizedBox(
+                        width: 90,
+                        height: 90,
+                        child: ElevatedButton(
+                          onPressed: () {},
+                          child: Text(
+                            "Skilling & Cerificate",
+                            style: TextStyle(color: Colors.black, fontSize: 13),
+                            textAlign: TextAlign.center,
+                          ),
+                          style: ElevatedButton.styleFrom(
+                              backgroundColor: Colors.white,
+                              shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(10))),
+                        ),
+                      ),
+                    ],
+                  ),
+
+
+                  SizedBox(height: 15,),
+
+                  Container(
+                    alignment: Alignment.centerLeft,
+                    margin: EdgeInsets.only(left: 10),
+                    child: SizedBox(
+                      width: 90,
+                      height: 90,
+                      child: ElevatedButton(
+                        onPressed: () {},
+                        child: Text(
+                          "Advanced Diploma",
+                          style: TextStyle(color: Colors.black, fontSize: 13),
+                          textAlign: TextAlign.center,
+                        ),
+                        style: ElevatedButton.styleFrom(
+                            backgroundColor: Colors.white,
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(10))),
+                      ),
+                    ),
+                  ),
+
+                ],
               ),
-            )
-
-
-
-
-          ],
-        ),
-
-      // body: SingleChildScrollView(
-      //
-      //   padding: EdgeInsets.symmetric(horizontal: 30),
-      //
-      //   child: Column(
-      //
-      //     crossAxisAlignment: CrossAxisAlignment.start,
-      //
-      //     children: [
-      //
-      //       Text('    Hi User'),
-      //
-      //       Padding(
-      //         padding: const EdgeInsets.fromLTRB(0, 10, 0, 0),
-      //         child: Container(height: 170,width: 340,
-      //         decoration: BoxDecoration(color: Colors.blue,borderRadius: BorderRadius.all(Radius.circular(30))),),
-      //       ),
-      //
-      //       SizedBox(height: 10,),
-      //       Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly,children: [
-      //         SizedBox(width: 90,
-      //           child: OutlinedButton(onPressed: (){}, child: Text("UG Courses",
-      //             style: TextStyle(color: Colors.black54, fontWeight: FontWeight.w700,fontSize: 10),),
-      //           style: OutlinedButton.styleFrom(
-      //               shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30))),),
-      //         ),
-      //
-      //         SizedBox(width: 90,
-      //           child: OutlinedButton(onPressed: (){}, child: Text("PG Courses",
-      //             style: TextStyle(color: Colors.black54,fontWeight: FontWeight.w700,fontSize: 10),),
-      //             style: OutlinedButton.styleFrom(
-      //                 shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30))),),
-      //         ),
-      //
-      //         SizedBox(width: 90,
-      //           child: OutlinedButton(onPressed: (){}, child: Text("Diploma",
-      //             style: TextStyle(color: Colors.black54,fontWeight: FontWeight.w700,fontSize: 10),),
-      //             style: OutlinedButton.styleFrom(
-      //                 shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30))),),
-      //         )
-      //       ],)
-      //     ],
-      //   ),
-      // ),
-
+            ),
+          )
+        ],
+      ),
     );
   }
 }

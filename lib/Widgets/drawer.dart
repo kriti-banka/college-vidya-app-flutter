@@ -54,7 +54,143 @@ Widget myDrawer(BuildContext context){
                   leading: Icon(CupertinoIcons.building_2_fill,color: Colors.white,),
                   title: Text("Search by Courses",
                     style: TextStyle(color: Colors.white),),
-                  onTap: (){},
+                  onTap: (){
+                    showDialog(context: context,
+                        builder: (BuildContext context){
+                        return AlertDialog(
+                          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+                          backgroundColor: Color(0xffE1E5F2),
+                          actions: [
+                            SizedBox(height: 20,),
+                            Center(child: Text("Select Courses",style: TextStyle(color: Colors.black,fontSize: 20),)),
+                            SizedBox(height: 40,),
+                            Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              children: [
+                              Container(
+                                alignment: Alignment.centerLeft,
+                                margin: EdgeInsets.only(left: 10),
+                                child: SizedBox(
+                                  width: 90,
+                                  height: 90,
+                                  child: ElevatedButton(
+                                    onPressed: () {
+                                      Navigator.pushNamed(context, '/ugcourses');
+                                    },
+                                    child: Text(
+                                      "UG Courses",
+                                      style: TextStyle(color: Colors.black, fontSize: 13),
+                                      textAlign: TextAlign.center,
+                                    ),
+                                    style: ElevatedButton.styleFrom(
+                                        backgroundColor: Colors.white,
+                                        shape: RoundedRectangleBorder(
+                                            borderRadius: BorderRadius.circular(10))),
+                                  ),
+                                ),
+                              ),
+
+                              Container(
+                                alignment: Alignment.centerLeft,
+                                margin: EdgeInsets.only(left: 10),
+                                child: SizedBox(
+                                  width: 90,
+                                  height: 90,
+                                  child: ElevatedButton(
+                                    onPressed: () {},
+                                    child: Text(
+                                      "PG Courses",
+                                      style: TextStyle(color: Colors.black, fontSize: 13),
+                                      textAlign: TextAlign.center,
+                                    ),
+                                    style: ElevatedButton.styleFrom(
+                                        backgroundColor: Colors.white,
+                                        shape: RoundedRectangleBorder(
+                                            borderRadius: BorderRadius.circular(10))),
+                                  ),
+                                ),
+                              ),
+
+                              Container(
+                                alignment: Alignment.centerLeft,
+                                margin: EdgeInsets.only(left: 10),
+                                child: SizedBox(
+                                  width: 90,
+                                  height: 90,
+                                  child: ElevatedButton(
+                                    onPressed: () {},
+                                    child: Text(
+                                      "Executive Education",
+                                      style: TextStyle(color: Colors.black, fontSize: 13),
+                                      textAlign: TextAlign.center,
+                                    ),
+                                    style: ElevatedButton.styleFrom(
+                                        backgroundColor: Colors.white,
+                                        shape: RoundedRectangleBorder(
+                                            borderRadius: BorderRadius.circular(10))),
+                                  ),
+                                ),
+                              ),
+                            ],),
+
+                            SizedBox(height: 30,),
+
+                            Padding(
+                              padding: const EdgeInsets.only(left: 5),
+                              child: Row(
+
+                                children: [
+                                Container(
+                                  alignment: Alignment.centerLeft,
+                                  margin: EdgeInsets.only(left: 10),
+                                  child: SizedBox(
+                                    width: 90,
+                                    height: 90,
+                                    child: ElevatedButton(
+                                      onPressed: () {},
+                                      child: Text(
+                                        "Skilling & Certificate",
+                                        style: TextStyle(color: Colors.black, fontSize: 12),
+                                        textAlign: TextAlign.center,
+                                      ),
+                                      style: ElevatedButton.styleFrom(
+                                          backgroundColor: Colors.white,
+                                          shape: RoundedRectangleBorder(
+                                              borderRadius: BorderRadius.circular(10))),
+                                    ),
+                                  ),
+                                ),
+
+                                SizedBox(width: 5,),
+
+                                Container(
+                                    alignment: Alignment.centerLeft,
+                                    margin: EdgeInsets.only(left: 10),
+                                    child: SizedBox(
+                                      width: 90,
+                                      height: 90,
+                                      child: ElevatedButton(
+                                        onPressed: () {},
+                                        child: Text(
+                                          "Advanced Diploma",
+                                          style: TextStyle(color: Colors.black, fontSize: 13),
+                                          textAlign: TextAlign.center,
+                                        ),
+                                        style: ElevatedButton.styleFrom(
+                                            backgroundColor: Colors.white,
+                                            shape: RoundedRectangleBorder(
+                                                borderRadius: BorderRadius.circular(10))),
+                                      ),
+                                    ),
+                                  ),
+                              ],),
+                            ),
+
+                            SizedBox(height: 40,)
+
+                          ],
+                        );
+                        });
+                  },
                 ),
 
                 ListTile(
