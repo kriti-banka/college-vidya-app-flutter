@@ -1,5 +1,4 @@
-
-
+import 'package:collegevidya/Screens/Navigation.dart';
 import 'package:collegevidya/Screens/Signin.dart';
 import 'package:collegevidya/Screens/Signup.dart';
 import 'package:collegevidya/Screens/Splash%20Screen.dart';
@@ -8,6 +7,8 @@ import 'package:flutter/material.dart';
 import 'Screens/Degree courses/UG degree/B.Tech/btech_spec.dart';
 import 'Screens/Degree courses/UG degree/UG Courses.dart';
 import 'Screens/Home.dart';
+import 'Screens/community.dart';
+import 'Screens/profile.dart';
 import 'Screens/search.dart';
 import 'Screens/Suggestin2min.dart';
 
@@ -17,11 +18,10 @@ void main(){
       debugShowCheckedModeBanner: false,
       home: Splash(),
       routes: {
-        "/home" : (context) => home(),
+        '/navigation': (context) => navigation(),
         "/Signup": (context) => signup(),
         "/completeprofile": (context) => completeprofile(),
         "/signin": (context) => signin(),
-        "/search": (context) => search(),
         "/suggest": (context) => suggest(),
         "/ugcourses": (context) => ugcourses(),
         "/btech": (context) => btech(),

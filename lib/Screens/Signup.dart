@@ -73,7 +73,7 @@ class _signupState extends State<signup> {
                       fontWeight: FontWeight.bold,
                       fontSize: 20),),
                   onPressed: (){
-                    Navigator.pushNamed(context,'/completeprofile');
+                    Navigator.pushReplacementNamed(context,'/completeprofile');
                   },
                   style: ElevatedButton.styleFrom(
                       backgroundColor: Color(0xff001149),
@@ -97,7 +97,7 @@ class _signupState extends State<signup> {
                         ),
                         GestureDetector(
                           onTap: (){
-                            Navigator.pushNamed(context,'/signin');
+                            Navigator.pushReplacementNamed(context,'/signin');
                           },
                           child: Text('login',style: TextStyle(
                               color: Colors.red[700],fontSize: 15,fontWeight: FontWeight.w500
