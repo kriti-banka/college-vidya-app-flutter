@@ -2,6 +2,7 @@ import 'package:collegevidya/Screens/Navigation.dart';
 import 'package:collegevidya/Screens/Signin.dart';
 import 'package:collegevidya/Screens/Signup.dart';
 import 'package:collegevidya/Screens/Splash%20Screen.dart';
+import 'package:collegevidya/Screens/add%20post.dart';
 import 'package:collegevidya/Screens/completeprofile.dart';
 import 'package:flutter/material.dart';
 import 'Screens/Degree courses/UG degree/B.Tech/btech_spec.dart';
@@ -25,6 +26,7 @@ void main(){
         "/suggest": (context) => suggest(),
         "/ugcourses": (context) => ugcourses(),
         "/btech": (context) => btech(),
+        '/addpost': (context) => addpost(),
       },
     ),
   );

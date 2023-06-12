@@ -5,7 +5,9 @@ import 'package:collegevidya/Screens/community.dart';
 import 'package:collegevidya/Screens/search.dart';
 import 'package:collegevidya/Widgets/drawer.dart';
 import 'package:collegevidya/Widgets/slider.dart';
+import 'package:collegevidya/Widgets/story.dart';
 import 'package:collegevidya/models/University_home_page_list.dart';
+import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
 import '../Widgets/appbar.dart';
 import 'package:collegevidya/Screens/profile.dart';
@@ -90,14 +92,27 @@ class _homeState extends State<home> {
         elevation: 0,
         // shadowColor: Colors.white,
         actions: [
-          IconButton(
-              onPressed: () {
-                // Navigator.pushNamed(context, "/search");
+          // IconButton(
+          //     onPressed: () {
+          //       Navigator.of(context).push(
+          //           MaterialPageRoute(builder: (context) => story()));
+          //     },
+          //     icon: Icon(
+          //       Icons.circle_outlined,
+          //       color: Colors.black,
+          //     )),
+
+          InkWell(
+            onTap: (){
+              Navigator.of(context).push(
+                MaterialPageRoute(builder: (context) => story()));
               },
-              icon: Icon(
-                Icons.circle_outlined,
-                color: Colors.black,
-              )),
+            child: CircleAvatar(
+              radius: 12,
+              backgroundImage: NetworkImage('https://img.freepik.com/premium-vector/floral-botanical-alphabet-vintage-hand-drawn-monogram-letter-s-letter-with-plants-flowers_538636-276.jpg'),
+            ),
+          ),
+
           IconButton(
               onPressed: () {},
               icon: Icon(
@@ -112,28 +127,32 @@ class _homeState extends State<home> {
               )),
         ],
       ),
-      extendBodyBehindAppBar: true,
+      // extendBodyBehindAppBar: true,
 
 
       body: Stack(
+        alignment: AlignmentDirectional.topStart,
         children: [
           //CONTAINER ROTATE
-          Transform.rotate(
-            angle: -0.38,
-            alignment: Alignment.centerLeft,
-            child: Container(
-              child: Text(''),
-              width: 700,
-              height: 450,
-              decoration: BoxDecoration(
-                  color: Color(0xff698BFB).withOpacity(0.3),
-                  borderRadius: BorderRadius.all(Radius.circular(30))),
+          Positioned(
+
+            child: Transform.rotate(
+              angle: -0.38,
+              alignment: Alignment.centerLeft,
+              child: Container(
+                child: Text(''),
+                width:700,
+                height: 450,
+                decoration: BoxDecoration(
+                    color: Color(0xff698BFB).withOpacity(0.3),
+                    borderRadius: BorderRadius.all(Radius.circular(30))),
+              ),
             ),
           ),
 
           //ALL CONTENT IN SINGLECHILDSCROLLVIEW
           Container(
-            margin: EdgeInsets.only(top: 90),
+            margin: EdgeInsets.only(top: 15),
             child: SingleChildScrollView(
               child: Column(
                 // crossAxisAlignment: CrossAxisAlignment.start,
