@@ -118,7 +118,7 @@ class _completeprofileState extends State<completeprofile> {
                     fontWeight: FontWeight.bold,
                     fontSize: 20),),
                 onPressed: (){
-                  Navigator.pushNamed(context,'/home');
+                  Navigator.pushReplacementNamed(context,'/navigation');
                 },
                 style: ElevatedButton.styleFrom(
                     backgroundColor: Color(0xff001149),

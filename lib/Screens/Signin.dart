@@ -1,3 +1,4 @@
+import 'package:collegevidya/Screens/Navigation.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -73,7 +74,7 @@ class _signinState extends State<signin> {
                       fontWeight: FontWeight.bold,
                       fontSize: 20),),
                       onPressed: (){
-                        Navigator.pushNamed(context,'/home');
+                        Navigator.pushReplacementNamed(context,'/navigation');
                       },
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Color(0xff001149),
@@ -97,7 +98,7 @@ class _signinState extends State<signin> {
                         ),
                         GestureDetector(
                           onTap: (){
-                            Navigator.pushNamed(context,'/Signup');
+                            Navigator.pushReplacementNamed(context, '/signup');
                           },
                           child: Text('Sign up',style: TextStyle(
                               color: Colors.red[700],fontSize: 15,fontWeight: FontWeight.w500

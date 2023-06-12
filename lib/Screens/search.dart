@@ -1,5 +1,8 @@
+import 'dart:io';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+
 
 class search extends StatefulWidget {
   const search({Key? key}) : super(key: key);
@@ -11,15 +14,18 @@ class search extends StatefulWidget {
 class _searchState extends State<search> {
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
         leading: IconButton(onPressed: (){
-          Navigator.pushNamed(context, "/home");
+          Navigator.pushNamed(context, "/navigation");
         },icon: Icon(CupertinoIcons.back,color: Colors.black,),),
         // leading: Icon(CupertinoIcons.back,color: Colors.black,),
       ),
+
+      // bottomNavigationBar: BottomNavigation(screen_index: 2,),
 
       body:
         Center(
