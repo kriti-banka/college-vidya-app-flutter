@@ -1,67 +1,13 @@
-import 'dart:convert';
-import 'dart:io';
-
-import 'package:collegevidya/Screens/community.dart';
-import 'package:collegevidya/Screens/search.dart';
-import 'package:collegevidya/Widgets/drawer.dart';
-import 'package:collegevidya/Widgets/slider.dart';
+import 'package:collegevidya/Screens/Experts.dart';
+import 'package:collegevidya/Widgets/homeslider.dart';
 import 'package:collegevidya/Widgets/story.dart';
-import 'package:collegevidya/models/University_home_page_list.dart';
-import 'package:dotted_border/dotted_border.dart';
+import 'package:collegevidya/models/University_list model.dart';
 import 'package:flutter/material.dart';
-import '../Widgets/appbar.dart';
-import 'package:collegevidya/Screens/profile.dart';
-import 'package:collegevidya/Widgets/slider.dart';
+import 'package:collegevidya/Connections/Connections.dart';
+
+
 
 import 'package:http/http.dart' as http;
-
-// List<Unilistmodel> parseUnilistmodel(String responseBody) {
-//   final parsed = json.decode(responseBody).cast<Map<String, dynamic>>();
-//   return parsed.map<Unilistmodel>((json) => Unilistmodel.fromJson(json)).toList();
-// }
-// Future<List<Unilistmodel>> fetchUnilistmodel() async {
-//   // print("SDfs/dfsdfsdf");
-//   final response = await http.get('https://admin.collegevidya.com/home_page_universities/' as Uri);
-//   if (response.statusCode == 200) {
-//     var data = jsonDecode(response.body);
-//     print(data);
-//     // return parseUnilistmodel(response.body);
-//     return data;
-//   } else {
-//     throw Exception('Unable to fetch products from the REST API');
-//   }
-// }
-
-Future<void> fetchData() async {
-  var url = Uri.parse('https://admin.collegevidya.com/home_page_universities/');
-
-  var response = await http.get(url);
-  if (response.statusCode == 200) {
-    // Request successful, parse the response JSON
-    var data = jsonDecode(response.body);
-    print(data);
-    return data.data;
-    // Process the data
-    // ...
-  } else {
-    // Request failed
-    print('Request failed with status: ${response.statusCode}.');
-  }
-}
-// List<Unilistmodel> parseUnilist(String responseBody) {
-//   final parsed = json.decode(responseBody).cast<Map<String, dynamic>>();
-//   return parsed.map<Unilistmodel>((json) =>  Unilistmodel.fromJson(json)).toList();
-// }
-
-// Future<List<Unilistmodel>> fetchData() async {
-//   final response = await http.get(
-//       'https://admin.collegevidya.com/home_page_universities/' as Uri);
-//   if (response.statusCode == 200) {
-//     return parseUnilist(response.body);
-//   } else {
-//     throw Exception('Unable to fetch products from the REST API');
-//   }
-// }
 
 
 class home extends StatefulWidget {
@@ -76,8 +22,20 @@ class _homeState extends State<home> {
 
 
 
+
   @override
   Widget build(BuildContext context) {
+
+    List<String> perks = [
+      "Easiest Compare & Choose", "Unbiased Counseling Guidance",
+      "Counseling From Verified Experts", "Telephonic & Video Counceling",
+      "All Topic Video Library", "Financial Assitance"
+    ];
+
+    List<String> perkicons =[
+      'assets/icons/Perk1.png','assets/icons/perk2.png','assets/icons/perk3.png',
+      'assets/icons/perk4.png','assets/icons/perk5.png','assets/icons/perk6.png'
+    ];
 
     return Scaffold(
       // backgroundColor: Colors.white,
@@ -90,17 +48,9 @@ class _homeState extends State<home> {
         ),
         backgroundColor: Colors.transparent,
         elevation: 0,
-        // shadowColor: Colors.white,
+
         actions: [
-          // IconButton(
-          //     onPressed: () {
-          //       Navigator.of(context).push(
-          //           MaterialPageRoute(builder: (context) => story()));
-          //     },
-          //     icon: Icon(
-          //       Icons.circle_outlined,
-          //       color: Colors.black,
-          //     )),
+
 
           InkWell(
             onTap: (){
@@ -127,7 +77,7 @@ class _homeState extends State<home> {
               )),
         ],
       ),
-      // extendBodyBehindAppBar: true,
+      extendBodyBehindAppBar: true,
 
 
       body: Stack(
@@ -142,7 +92,7 @@ class _homeState extends State<home> {
               child: Container(
                 child: Text(''),
                 width:700,
-                height: 450,
+                height: 500,
                 decoration: BoxDecoration(
                     color: Color(0xff698BFB).withOpacity(0.3),
                     borderRadius: BorderRadius.all(Radius.circular(30))),
@@ -151,8 +101,8 @@ class _homeState extends State<home> {
           ),
 
           //ALL CONTENT IN SINGLECHILDSCROLLVIEW
-          Container(
-            margin: EdgeInsets.only(top: 15),
+          Padding(
+            padding: const EdgeInsets.only(top: 90),
             child: SingleChildScrollView(
               child: Column(
                 // crossAxisAlignment: CrossAxisAlignment.start,
@@ -171,12 +121,13 @@ class _homeState extends State<home> {
                   ),
 
                   // BANNER
-                  Container(
-                      height: 170,
-                      width: 390,
-                      decoration: BoxDecoration(
-                          color: Colors.blue,
-                          borderRadius: BorderRadius.all(Radius.circular(30)))),
+                  bannerslider(BannersData()),
+                  // Container(
+                  //     height: 170,
+                  //     width: 390,
+                  //     decoration: BoxDecoration(
+                  //         color: Colors.blue,
+                  //         borderRadius: BorderRadius.all(Radius.circular(30)))),
 
                   SizedBox(
                     height: 10,
@@ -204,112 +155,13 @@ class _homeState extends State<home> {
                     height: 20,
                   ),
 
-                  // DEGREE ROW
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      //UG COURSE BUTTON
-                      SizedBox(
-                        width: 90,
-                        height: 90,
-                        child: ElevatedButton(
-                          onPressed: () {
-                            Navigator.pushNamed(context, '/ugcourses');
-                          },
-                          child: Text(
-                            "UG Courses",
-                            style: TextStyle(color: Colors.black, fontSize: 13),
-                            textAlign: TextAlign.center,
-                          ),
-                          style: ElevatedButton.styleFrom(
-                              backgroundColor: Colors.white,
-                              shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(10))),
-                        ),
-                      ),
 
-                      //PG COURSE BUTTON
-                      SizedBox(
-                        width: 90,
-                        height: 90,
-                        child: ElevatedButton(
-                          onPressed: () {},
-                          child: Text(
-                            "PG Courses",
-                            style: TextStyle(color: Colors.black, fontSize: 13),
-                            textAlign: TextAlign.center,
-                          ),
-                          style: ElevatedButton.styleFrom(
-                              backgroundColor: Colors.white,
-                              shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(10))),
-                        ),
-                      ),
+                  Domaingrid(fetchdomaindata()),
 
-                      //EXECUTIVE EDUCATION BUTTON
-                      SizedBox(
-                        width: 90,
-                        height: 90,
-                        child: ElevatedButton(
-                          onPressed: () {},
-                          child: Text(
-                            "Executive Education",
-                            style: TextStyle(color: Colors.black, fontSize: 13),
-                            textAlign: TextAlign.center,
-                          ),
-                          style: ElevatedButton.styleFrom(
-                              backgroundColor: Colors.white,
-                              shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(10))),
-                        ),
-                      ),
 
-                      //SKILLING AND CERTIFICATE
-                      SizedBox(
-                        width: 90,
-                        height: 90,
-                        child: ElevatedButton(
-                          onPressed: () {},
-                          child: Text(
-                            "Skilling & Cerificate",
-                            style: TextStyle(color: Colors.black, fontSize: 13),
-                            textAlign: TextAlign.center,
-                          ),
-                          style: ElevatedButton.styleFrom(
-                              backgroundColor: Colors.white,
-                              shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(10))),
-                        ),
-                      ),
-                    ],
-                  ),
+                  SizedBox(height: 15,),
 
-                  SizedBox(
-                    height: 15,
-                  ),
-
-                  Container(
-                    alignment: Alignment.centerLeft,
-                    margin: EdgeInsets.only(left: 10),
-                    child: SizedBox(
-                      width: 90,
-                      height: 90,
-                      child: ElevatedButton(
-                        onPressed: () {},
-                        child: Text(
-                          "Advanced Diploma",
-                          style: TextStyle(color: Colors.black, fontSize: 13),
-                          textAlign: TextAlign.center,
-                        ),
-                        style: ElevatedButton.styleFrom(
-                            backgroundColor: Colors.white,
-                            shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(10))),
-                      ),
-                    ),
-                  ),
-                  SizedBox(height: 18,),
-                  
+                  //UNIVERSITY ON CLG VIDYA
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -317,39 +169,192 @@ class _homeState extends State<home> {
                       Text("    University on College Vidya",
                         style: TextStyle(fontSize: 15,fontWeight: FontWeight.w500),),
 
-                      Container(child: Row(
-                        children: [
-                          Text('View all',style: TextStyle(color: Colors.blue),),
-                          Icon(Icons.navigate_next,color: Colors.blue,)
-                        ],
+                      Container(child: GestureDetector(
+                        child: Row(
+                          children: [
+                            Text('View all',style: TextStyle(color: Colors.blue),),
+                            Icon(Icons.navigate_next,color: Colors.blue,)
+                          ],
+                        ),
+                        onTap: (){
+                        },
                       ))
                     ],
                   ),
 
-                  Container(
-                    height: 150,
-                      width: double.maxFinite,
-                      child: unilogoslider(fetchData())
+                  SizedBox(height: 10,),
+                  unilogoslider(sliceData1()),
+                  SizedBox(height: 10,),
+                  unilogoslider(sliceData2()),
+                  SizedBox(height: 10,),
+                  unilogoslider(sliceData3()),
+                  SizedBox(height: 20,),
+
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+
+                      Text("    College Vidya Experts",
+                        style: TextStyle(fontSize: 15,fontWeight: FontWeight.w500),),
+
+                      Container(child: GestureDetector(
+                        child: Row(
+                          children: [
+                            Text('View all',style: TextStyle(color: Colors.blue),),
+                            Icon(Icons.navigate_next,color: Colors.blue,)
+                          ],
+                        ),
+                        onTap: (){
+                          Navigator.pushReplacement(context,
+                              MaterialPageRoute(builder: (context)=> experts()));
+                        },
+                      ))
+                    ],
                   ),
 
+                  SizedBox(height: 20,),
+
+                  Stack(
+                    alignment: Alignment.center,
+                    children: [
+                      Container(
+                        height: 90,
+                        width: 370,
+                        decoration: BoxDecoration(
+                          color:Color(0xff698BFB).withOpacity(0.3),
+                          borderRadius: BorderRadius.all(Radius.circular(50))
+                        ),
+                      ),
+                      expertsslider(expertsdata()),
+
+
+
+                    ],
+                  ),
+
+                  SizedBox(height: 30,),
+
                   Container(
-                    child: Row(
+                    width: 360,
+                    height: 90,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.all(Radius.circular(10)),
+                      color: Colors.white,
+                      boxShadow: [
+                        BoxShadow(
+                            color: Colors.blue.shade50.withOpacity(1),
+                            blurRadius: 5,
+                            spreadRadius: 1,
+
+                            offset: Offset(0,5))]
+                    ),
+                    child:
+                    Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
                         Container(
-                          decoration: BoxDecoration(
-                            color: Colors.grey
-                          ),
-                          child: Row(
-                          children: [
-                            unilogoslider(fetchData())
-                          ],
-                        ),),
 
+                          margin: EdgeInsets.only(top: 20),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Row(children: [
+                                Text("Verify",style: TextStyle(
+                                    color: Colors.blue[900],
+                                  fontWeight: FontWeight.bold,fontSize: 20
+                                ),),
+                                Text(' Universities',style: TextStyle(
+                                    color: Colors.black,
+                                    fontWeight: FontWeight.bold,fontSize: 20),)
+                              ],),
+                              Row(children: [
+                                Text('in',style: TextStyle(color: Colors.blue[900],
+                                    fontWeight: FontWeight.bold,fontSize: 20),),
+                                Text(' just',style: TextStyle(color: Colors.black,
+                                    fontWeight: FontWeight.bold,fontSize: 20),),
+                                Text(' Simple Clicks',style: TextStyle(color: Colors.blue[900],
+                                    fontWeight: FontWeight.bold,fontSize: 20),)
+                              ],)
+                            ],
+                          ),
+                        ),
+
+                        Container(
+                          width: 100,
+                          child: ElevatedButton(
+                            style: ElevatedButton.styleFrom(
+                              backgroundColor: Colors.black,
+                              shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(20)))
+                            ),
+                              onPressed: (){},
+                              child: Text('Verify')),
+                        )
                       ],
                     ),
-                  )
+                  ),
 
+                  SizedBox(height: 30,),
+
+                  Align(
+                    alignment: Alignment.centerLeft,
+                    child: Container(
+                      margin: EdgeInsets.only(left: 20),
+                      child: Text("Perks",style: TextStyle(
+                        fontSize: 20,fontWeight: FontWeight.bold
+                      ),),
+                    ),
+                  ),
+
+                  SizedBox(height: 20,),
+
+
+                  Container(
+                    height: 300,
+                    // color: Colors.blue,
+                    child: GridView.builder(
+                      padding: EdgeInsets.zero,
+                      // physics: NeverScrollableScrollPhysics(),
+                        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                          crossAxisCount: 3
+                        ),
+                        itemCount: 6,
+                        itemBuilder: (BuildContext context,int index){
+                          String perk = perks[index];
+                          String perkicon = perkicons[index];
+                          List<Color> colors = [
+                            Color(0xffA0F5CE),
+                            Color(0xffFFD3C0),
+                            Color(0xffF19CDD),
+                            Color(0xffDFC1FF),
+                            Color(0xffA5DFF7),
+                            Color(0xffFFC0C0),
+                         ];
+                          Color boxColor = colors[index % colors.length];
+
+                          return Container(
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.all(Radius.circular(20)),
+                              color: boxColor,
+                            ),
+                            margin: EdgeInsets.only(left: 10,right: 10,bottom: 15),
+                            child: Center(child: Padding(
+                              padding: const EdgeInsets.fromLTRB(10,0,5,0),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                children: [
+                                  Image.asset(perkicon,width: 40,),
+                                  Text(perk,
+                                    style: TextStyle(
+                                      fontWeight: FontWeight.w600
+                                    ),),
+                                ],
+                              ),
+                            )),
+
+                          );
+                        }),
+                  )
 
                 ],
               ),

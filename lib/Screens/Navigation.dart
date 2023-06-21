@@ -32,23 +32,24 @@ class _navigationState extends State<navigation> {
 
       bottomNavigationBar: SalomonBottomBar(
         curve: Curves.linear,
+
         onTap: _onItemTapped,
         currentIndex: screen_index,
         items: [
           SalomonBottomBarItem(
-              selectedColor: Colors.blue,
+              selectedColor: Color(0xff698BFB),
               title: const Text('Home'),
               icon: const Icon(Icons.home_filled,size: 25,)),
           SalomonBottomBarItem(
-              selectedColor: Colors.blue,
+              selectedColor: Color(0xff698BFB),
               title: const Text('community'),
               icon: const Icon(Icons.people_alt_sharp)),
           SalomonBottomBarItem(
-              selectedColor: Colors.blue,
+              selectedColor: Color(0xff698BFB),
               title: const Text('search'),
               icon: const Icon(Icons.search_outlined)),
           SalomonBottomBarItem(
-              selectedColor: Colors.blue,
+              selectedColor: Color(0xff698BFB),
               title: const Text('profile'),
               icon: const Icon(Icons.person)),
         ],

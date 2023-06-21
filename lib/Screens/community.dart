@@ -1,4 +1,3 @@
-import 'dart:io';
 
 import 'package:collegevidya/Widgets/postcard.dart';
 import 'package:flutter/material.dart';
@@ -77,7 +76,9 @@ class _communityState extends State<community> with TickerProviderStateMixin {
         },
         child: Icon(Icons.add),
       ),
+
       body: Container(
+
         margin: EdgeInsets.only(top: 20),
         child: TabBarView(
           controller: _tabController,
