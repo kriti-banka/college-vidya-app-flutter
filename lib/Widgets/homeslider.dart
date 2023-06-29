@@ -70,7 +70,7 @@ Widget unilogoslider(Future future){
                     viewportFraction: .32,
                     height: 150,
                     autoPlay: true,
-                    autoPlayInterval: Duration(seconds: 3) ,
+                    autoPlayInterval: Duration(seconds: 5) ,
                   ));
 
             }

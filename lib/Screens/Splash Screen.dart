@@ -1,5 +1,5 @@
 import 'dart:async';
-import 'package:collegevidya/Screens/Signin.dart';
+import 'package:collegevidya/Screens/Signin-Signup/Signin.dart';
 import 'package:flutter/material.dart';
 
 class Splash extends StatefulWidget {

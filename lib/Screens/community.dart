@@ -2,8 +2,6 @@
 import 'package:collegevidya/Widgets/postcard.dart';
 import 'package:flutter/material.dart';
 
-
-
 class community extends StatefulWidget {
   const community({Key? key}) : super(key: key);
 

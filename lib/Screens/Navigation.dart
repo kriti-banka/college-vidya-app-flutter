@@ -6,16 +6,20 @@ import 'package:collegevidya/Widgets/drawer.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:salomon_bottom_bar/salomon_bottom_bar.dart';
+import 'Signin-Signup/otp form.dart';
 
 class navigation extends StatefulWidget {
-  const navigation({Key? key}) : super(key: key);
+  const navigation({Key? key,}) : super(key: key);
+
 
   @override
   State<navigation> createState() => _navigationState();
 }
 
 class _navigationState extends State<navigation> {
+
   int screen_index=0;
+
 
   void _onItemTapped(int index) {
     setState(() {
@@ -24,11 +28,10 @@ class _navigationState extends State<navigation> {
   }
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
 
-
      drawer: myDrawer(),
-
 
       bottomNavigationBar: SalomonBottomBar(
         curve: Curves.linear,
@@ -56,8 +59,6 @@ class _navigationState extends State<navigation> {
       ),
 
       body: [home(),community(),search(),profile()].elementAt(screen_index),
-
-
 
     );
   }
