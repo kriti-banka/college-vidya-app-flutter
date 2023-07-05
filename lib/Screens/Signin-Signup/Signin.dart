@@ -19,6 +19,7 @@ class _signinState extends State<signin> {
   TextEditingController mobileNumberController = TextEditingController();
   String mobile = '';
   FocusNode focusNode = FocusNode();
+  String? _selectedcountry;
 
   @override
   void dispose() {
@@ -48,56 +49,95 @@ class _signinState extends State<signin> {
 
           Expanded(flex: 2, child: Container(
             color: Colors.white,
+
             child: SingleChildScrollView(
               child: Column(
                 children: [
                   SizedBox(height: 50,),
 
-                  //MOBILE NUMBER TEXT FEILD
-                  // SizedBox(width: 350,
-                  //     child: TextFormField(
-                  //       controller: mobileNumberController,
-                  //   keyboardType: TextInputType.number,
-                  //       inputFormatters: [
-                  //         LengthLimitingTextInputFormatter(10),
-                  //         FilteringTextInputFormatter.digitsOnly,
-                  //       ],
-                  //
-                  //   decoration: InputDecoration(
-                  //     filled: true,
-                  //     fillColor: Color(0xFFf3f3f3),
-                  //     // prefixIcon: Icon(Icons.email_outlined),
-                  //     hintText: 'phone number',
-                  //     border: OutlineInputBorder(
-                  //         borderRadius: BorderRadius.circular(30),
-                  //         borderSide: BorderSide.none),
-                  //   ),
-                  //
-                  // )
-                  // ),
+                  Container(
+                    margin: EdgeInsets.only(left: 20,right: 20),
+                    child: Row(
+                      // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        DropdownButtonHideUnderline(
+                          child: Container(
+                            width: 100,
+                            height: 45,
+                            decoration: BoxDecoration(
+                                color: Colors.grey[300]?.withOpacity(0.4),
+                                borderRadius: BorderRadius.all(Radius.circular(10))
+                            ),
+                            child: Padding(
+                              padding: const EdgeInsets.only(left: 12),
+                              child: DropdownButton(
+                                dropdownColor: Colors.grey[300],
+                                borderRadius: BorderRadius.all(Radius.circular(10)),
+                                // icon: Padding(
+                                //   padding: const EdgeInsets.only(right: 10),
+                                //   child: Icon(Icons.arrow_drop_down,color: Colors.grey,),
+                                // ),
+                                hint: Padding(
+                                  padding: const EdgeInsets.only(left: 12),
+                                  child: Text('country',
+                                    style: TextStyle(
+                                        fontSize: 12
+                                    ),),
+                                ),
 
-                  SizedBox(
-                    width: 370,height: 70,
-                    child: IntlPhoneField(
-                      controller: mobileNumberController,
-                      focusNode: focusNode,
-                      decoration: InputDecoration(
-                        filled: true,
-                        fillColor: Colors.grey[250],
-                        hintText: 'Phone Number',
-                        hintStyle: TextStyle(fontSize: 12),
-                        border: OutlineInputBorder(
-                            borderSide: BorderSide.none,
-                            borderRadius: BorderRadius.all(Radius.circular(10))
+                                value: _selectedcountry,
+                                onChanged: (countryValue) {
+                                  setState(() {
+                                    _selectedcountry = countryValue!;
+                                  });
+                                },
+                                style: TextStyle(
+                                    decoration: TextDecoration.none,
+                                    color: Colors.black// Remove underline
+                                ),
+                                items: [
+                                  DropdownMenuItem(
+                                    value: 'india',
+                                    child: Text('india'),
+
+                                  ),
+                                  DropdownMenuItem(
+                                    value: 'russia',
+                                    child: Text('russia'),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
                         ),
-                      ),
-                      languageCode: "en",
-                      onChanged: (phone) {
-                        print(phone.completeNumber);
-                      },
-                      onCountryChanged: (country) {
-                        print('Country changed to: ' + country.name);
-                      },
+
+                        SizedBox(width: 5,),
+
+
+                        SizedBox(width: 265,height: 45,
+                            child: TextField(
+                              controller: mobileNumberController,
+                              keyboardType: TextInputType.number,
+                              inputFormatters: [
+                                LengthLimitingTextInputFormatter(10),
+                                FilteringTextInputFormatter.digitsOnly,
+                              ],
+                              decoration: InputDecoration(
+                                hintText: 'phoneNumber',
+                                hintStyle: TextStyle(fontSize: 12),
+                                filled: true,
+                                fillColor: Colors.grey[250],
+                                prefixIcon: Icon(Icons.call,weight: 15,),
+                                // hintStyle: TextStyle(fontSize: 12),
+                                border: OutlineInputBorder(borderRadius: BorderRadius.circular(10),
+                                    borderSide: BorderSide.none
+                                ),
+                              ),
+                            )
+                        ),
+
+                      ],
                     ),
                   ),
 
@@ -123,50 +163,6 @@ class _signinState extends State<signin> {
                         MaterialPageRoute(
                             builder: (context) => OTPVerificationPage(mobile: mobile)));
 
-                    // if ('$otp' != null){
-                    //
-                    //   showDialog(
-                    //     context: context,
-                    //     builder: (BuildContext context) {
-                    //       return AlertDialog(
-                    //         content: new Text("$otp"),
-                    //         actions: <Widget>[
-                    //           new TextButton(
-                    //             child: new Text("OK"),
-                    //             onPressed: () {
-                    //               Navigator.push(
-                    //                   context,
-                    //                   MaterialPageRoute(
-                    //                       builder: (context) => OTPVerificationPage(mobile: mobile)));
-                    //             },
-                    //           ),
-                    //         ],
-                    //       );
-                    //     },
-                    //   );
-                    //
-                    //   print('Generated OTP: $otp');
-                    //
-                    // }
-                    // else{
-                    //   showDialog(
-                    //     context: context,
-                    //     builder: (BuildContext context) {
-                    //       return AlertDialog(
-                    //         title: new Text("Opps!"),
-                    //         content: new Text("Can't generate OTP"),
-                    //         actions: <Widget>[
-                    //           new TextButton(
-                    //             child: new Text("OK"),
-                    //             onPressed: () {
-                    //               Navigator.of(context).pop();
-                    //             },
-                    //           ),
-                    //         ],
-                    //       );
-                    //     },
-                    //   );
-                    // }
                       },
 
                       style: ElevatedButton.styleFrom(
