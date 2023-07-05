@@ -123,12 +123,7 @@ class _homeState extends State<home> {
 
                   // BANNER
                   bannerslider(BannersData()),
-                  // Container(
-                  //     height: 170,
-                  //     width: 390,
-                  //     decoration: BoxDecoration(
-                  //         color: Colors.blue,
-                  //         borderRadius: BorderRadius.all(Radius.circular(30)))),
+
 
                   SizedBox(
                     height: 10,

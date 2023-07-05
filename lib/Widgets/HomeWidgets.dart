@@ -4,6 +4,7 @@ import 'package:collegevidya/Screens/Domain%20courses/Courses.dart';
 import 'package:collegevidya/models/Banner%20Model.dart';
 import 'package:collegevidya/models/Courses%20Model.dart';
 import 'package:collegevidya/models/Experts model.dart';
+import 'package:collegevidya/models/state%20model.dart';
 import 'package:flutter/material.dart';
 import 'package:collegevidya/models/University_list model.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -15,6 +16,8 @@ Widget banners(Banners data,BuildContext context){
     child: Image.network('${data.image}'),
   );
 }
+
+
 
 //UNIVERSITY LOGO
 Widget universitylogo(Unilistmodel data,BuildContext context){
@@ -52,6 +55,7 @@ Widget experts(Experts data,BuildContext context){
   );
 }
 
+//DOMAIN
 Widget Domaindata(Domain domain,BuildContext context){
 
   return ElevatedButton(
@@ -72,6 +76,7 @@ Widget Domaindata(Domain domain,BuildContext context){
   }
 
 
+  //COURSES
 Widget Coursedata(Course course,BuildContext context){
   return  Stack(
     children: [
@@ -111,16 +116,8 @@ Widget Coursedata(Course course,BuildContext context){
                 Container(
                   child: Column(
                     children: [
-                      // Icon(
-                      //   Icons.book,
-                      //   color: Colors.black,
-                      // ),
-                      // Image.network('${course.icon}'),
+
                       SvgPicture.network('${course.icon}',width: 25,),
-
-
-
-
                       Text(
                         '${course.name}',
                         style: TextStyle(color: Colors.black),
@@ -128,7 +125,6 @@ Widget Coursedata(Course course,BuildContext context){
                     ],
                   ),
                 ),
-
 
                 Container(
                   child: 
@@ -148,6 +144,7 @@ Widget Coursedata(Course course,BuildContext context){
 }
 
 
+//SPECIALISATION
 Widget Specializationdata(Specialization specialization,BuildContext context){
   return Container(
     height: 110,
