@@ -4,9 +4,11 @@ import "package:flutter/cupertino.dart";
 import "package:flutter/material.dart";
 
 import "../Connections/Connections.dart";
+import "../models/user model.dart";
 
 class myDrawer extends StatefulWidget {
-  const myDrawer({Key? key}) : super(key: key);
+  final UserData userdetails;
+  const myDrawer({required this.userdetails,Key? key}) : super(key: key);
 
   @override
   State<myDrawer> createState() => _myDrawerState();
@@ -43,7 +45,7 @@ class _myDrawerState extends State<myDrawer> {
                                 ),
                               ),
                               SizedBox(height: 10,),
-                              Text('Avatar',
+                              Text('${widget.userdetails.name}',
                               style: TextStyle(
                                 fontSize: 15,
                                 color: Colors.white,

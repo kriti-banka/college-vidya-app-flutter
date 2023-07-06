@@ -8,16 +8,13 @@ import 'package:collegevidya/Screens/verifyUniversity%20.dart';
 import 'package:flutter/material.dart';
 import 'Screens/Suggestin2min.dart';
 
-
 void main(){
-
 
   runApp(
     MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Splash(),
       routes: {
-        '/navigation': (context) => navigation(),
         "/signup": (context) => signup(),
         "/signin": (context) => signin(),
         "/suggest": (context) => suggest(),
