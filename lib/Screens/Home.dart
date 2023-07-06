@@ -4,15 +4,12 @@ import 'package:collegevidya/Widgets/story.dart';
 import 'package:collegevidya/models/University_list model.dart';
 import 'package:flutter/material.dart';
 import 'package:collegevidya/Connections/Connections.dart';
-
-
-
-import 'package:http/http.dart' as http;
+import '../models/user model.dart';
 
 
 class home extends StatefulWidget {
-  const home({Key? key}) : super(key: key);
-
+  final UserData userdetails;
+  const home({required this.userdetails, Key? key}) : super(key: key);
 
   @override
   State<home> createState() => _homeState();
@@ -20,9 +17,6 @@ class home extends StatefulWidget {
 
 class _homeState extends State<home> {
   late Unilistmodel data;
-
-
-
 
   @override
   Widget build(BuildContext context) {
@@ -51,8 +45,6 @@ class _homeState extends State<home> {
         elevation: 0,
 
         actions: [
-
-
           InkWell(
             onTap: (){
               Navigator.of(context).push(
@@ -112,7 +104,7 @@ class _homeState extends State<home> {
                   Container(
                     margin: EdgeInsets.only(left: 30),
                     child: Text(
-                      'Hi User!',
+                      'Hi ${widget.userdetails.name}!',
                     ),
                     alignment: Alignment.topLeft,
                   ),
