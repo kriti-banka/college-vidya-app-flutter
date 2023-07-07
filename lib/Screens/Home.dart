@@ -87,7 +87,7 @@ class _homeState extends State<home> {
                 width:700,
                 height: 500,
                 decoration: BoxDecoration(
-                    color: Color(0xff698BFB).withOpacity(0.3),
+                    color: Color(0xff698BFB).withOpacity(0.2),
                     borderRadius: BorderRadius.all(Radius.circular(30))),
               ),
             ),
@@ -105,6 +105,7 @@ class _homeState extends State<home> {
                     margin: EdgeInsets.only(left: 30),
                     child: Text(
                       'Hi ${widget.userdetails.name}!',
+                      style: TextStyle(fontSize: 20,fontWeight: FontWeight.w500),
                     ),
                     alignment: Alignment.topLeft,
                   ),
@@ -143,12 +144,62 @@ class _homeState extends State<home> {
                     height: 20,
                   ),
 
-
-                  Domaingrid(fetchdomaindata()),
+                  Container(
+                    margin: EdgeInsets.only(left: 10,right: 10),
+                    // height: 200,
+                    child: Domaingrid(fetchdomaindata()),
+                  ),
 
 
                   SizedBox(height: 15,),
 
+                  //EXPERTS
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+
+                      Text("    College Vidya Experts",
+                        style: TextStyle(fontSize: 15,fontWeight: FontWeight.w500),),
+
+                      Container(child: GestureDetector(
+                        child: Row(
+                          children: [
+                            Text('View all',style: TextStyle(color: Colors.blue),),
+                            Icon(Icons.navigate_next,color: Colors.blue,)
+                          ],
+                        ),
+                        onTap: (){
+                          Navigator.push(context,
+                              MaterialPageRoute(builder: (context)=> experts()));
+                        },
+                      ))
+                    ],
+                  ),
+
+                  SizedBox(height: 20,),
+
+                  Stack(
+                    alignment: Alignment.center,
+                    children: [
+                      Container(
+                        margin: EdgeInsets.only(left: 30),
+                        height: 150,
+                        width: 400,
+                        decoration: BoxDecoration(
+                            color:Color(0xff698BFB).withOpacity(0.3),
+                            borderRadius: BorderRadius.only(topLeft: Radius.circular(20),bottomLeft: Radius.circular(20))
+                            // borderRadius: BorderRadius.all(Radius.circular())
+                        ),
+                      ),
+                      Container(
+                        // margin: EdgeInsets.only(top: 30),
+                        child: expertsslider(expertsdata()),
+                      )
+
+                    ],
+                  ),
+
+                  SizedBox(height: 20,),
                   //UNIVERSITY ON CLG VIDYA
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -178,47 +229,7 @@ class _homeState extends State<home> {
                   unilogoslider(sliceData3()),
                   SizedBox(height: 20,),
 
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
 
-                      Text("    College Vidya Experts",
-                        style: TextStyle(fontSize: 15,fontWeight: FontWeight.w500),),
-
-                      Container(child: GestureDetector(
-                        child: Row(
-                          children: [
-                            Text('View all',style: TextStyle(color: Colors.blue),),
-                            Icon(Icons.navigate_next,color: Colors.blue,)
-                          ],
-                        ),
-                        onTap: (){
-                          Navigator.pushReplacement(context,
-                              MaterialPageRoute(builder: (context)=> experts()));
-                        },
-                      ))
-                    ],
-                  ),
-
-                  SizedBox(height: 20,),
-
-                  Stack(
-                    alignment: Alignment.center,
-                    children: [
-                      Container(
-                        height: 90,
-                        width: 370,
-                        decoration: BoxDecoration(
-                          color:Color(0xff698BFB).withOpacity(0.3),
-                          borderRadius: BorderRadius.all(Radius.circular(50))
-                        ),
-                      ),
-                      expertsslider(expertsdata()),
-
-
-
-                    ],
-                  ),
 
                   SizedBox(height: 30,),
 
@@ -300,6 +311,8 @@ class _homeState extends State<home> {
                     height: 300,
                     // color: Colors.blue,
                     child: GridView.builder(
+                      shrinkWrap: true,
+                      physics: NeverScrollableScrollPhysics(),
                       padding: EdgeInsets.zero,
                       // physics: NeverScrollableScrollPhysics(),
                         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(

@@ -13,7 +13,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 Widget banners(Banners data,BuildContext context){
   return ClipRRect(
     borderRadius: BorderRadius.all(Radius.circular(30)),
-    child: Image.network('${data.image}'),
+    child: Image.network('${data.image}', fit: BoxFit.fill,),
   );
 }
 
@@ -26,7 +26,7 @@ Widget universitylogo(Unilistmodel data,BuildContext context){
       Container(
         margin: EdgeInsets.fromLTRB(10,0,8,0),
         height: 60,
-        width: 130,
+        width: 100,
         decoration: BoxDecoration(
           color: Colors.white,
             borderRadius: BorderRadius.all(Radius.circular(20))
@@ -43,13 +43,40 @@ Widget universitylogo(Unilistmodel data,BuildContext context){
 
 //EXPERTS
 
-Widget experts(Experts data,BuildContext context){
-  return ClipRRect(
-    borderRadius: BorderRadius.all(Radius.circular(25)),
-    child: ColorFiltered(
-      colorFilter: ColorFilter.mode(Colors.grey, BlendMode.saturation),
-      child: Image.network(
-    "${data.profileImage}",fit: BoxFit.cover,
+// Widget experts(Experts data,BuildContext context){
+//   return ClipRRect(
+//     borderRadius: BorderRadius.all(Radius.circular(25)),
+//     child: ColorFiltered(
+//       colorFilter: ColorFilter.mode(Colors.grey, BlendMode.saturation),
+//       child: Image.network(
+//     "${data.profileImage}",fit: BoxFit.cover,
+//       ),
+//     ),
+//   );
+// }
+
+Widget experts(Experts data, BuildContext context){
+  return Container(
+    // color: Colors.white,
+    height: 120,
+    width: 150,
+    decoration: BoxDecoration(
+      color: Colors.white, 
+      borderRadius: BorderRadius.all(Radius.circular(8))
+    ),
+
+    child: Padding(
+      padding: const EdgeInsets.only(left: 10,right: 10,top: 10),
+      child: Column(
+        children: [
+          Stack(
+            children: [
+              Image.network('${data.profileImage}',height: 80, fit:BoxFit.fill)
+            ],
+          ),
+          Text('${data.name}'),
+          Text('${data.designation}')
+        ],
       ),
     ),
   );

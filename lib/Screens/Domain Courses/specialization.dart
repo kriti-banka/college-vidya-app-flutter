@@ -41,8 +41,6 @@ class _specializationState extends State<specialization> {
             color: Colors.black,
           ),
           onPressed: () {
-          // Navigator.pushReplacement(context,
-          // MaterialPageRoute(builder: (context) => courses(domain: domain)));
           Navigator.pop(context);
           },
         ),

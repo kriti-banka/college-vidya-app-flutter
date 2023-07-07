@@ -47,7 +47,7 @@ Widget bannerslider(Future future){
 Widget unilogoslider(Future future){
 
   return Container(
-    height: 60,
+    height: 50,
     width: double.maxFinite,
     child: FutureBuilder(
       future: future,
@@ -67,7 +67,7 @@ Widget unilogoslider(Future future){
                     return universitylogo(Unilistmodel.fromJson(snapshot.data[index]), context);
                   },
                   options: CarouselOptions(
-                    viewportFraction: .32,
+                    viewportFraction: .29,
                     height: 150,
                     autoPlay: true,
                     autoPlayInterval: Duration(seconds: 5) ,
@@ -86,14 +86,12 @@ Widget unilogoslider(Future future){
 //EXPERTS PROFILE SLIDER
 Widget expertsslider(Future future){
   return Container(
-    height: 130,
+    // height: 200,
     // width: double.maxFinite,
-    width: 380,
+    // width: 380,
     child: FutureBuilder(
         future: future,
         builder: (context, AsyncSnapshot snapshot){
-          // print(snapshot.hasData);
-          // return Text("hi");
           if(snapshot.connectionState==ConnectionState.waiting || future==null)
           {
             return Center(
@@ -108,7 +106,7 @@ Widget expertsslider(Future future){
                   },
                   options: CarouselOptions(
                     viewportFraction: .37,
-                    height: 130,
+                    height: 150,
                     autoPlay: true,
                     autoPlayInterval: Duration(seconds: 3),
                     enlargeCenterPage: true,
@@ -128,43 +126,38 @@ Widget expertsslider(Future future){
 
 
 Widget Domaingrid(Future future){
-  return Container(
-
-    margin: EdgeInsets.only(left: 10,right: 10,),
-    height: 200,
-
-    child: FutureBuilder(
-      future: future,
-      builder: (context, AsyncSnapshot snapshot){
-        if(snapshot.connectionState==ConnectionState.waiting){
-          return Center(
-            child: CircularProgressIndicator(),
-          );
+  return FutureBuilder(
+    future: future,
+    builder: (context, AsyncSnapshot snapshot){
+      if(snapshot.connectionState==ConnectionState.waiting){
+        return Center(
+          child: CircularProgressIndicator(),
+        );
+      }
+      else{
+        if (snapshot.hasData){
+          return GridView.builder(
+            shrinkWrap: true,
+            padding: EdgeInsets.zero,
+              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: 4,
+                crossAxisSpacing: 10,
+                childAspectRatio: 10/10,
+                mainAxisSpacing: 10
+          ),
+              physics: NeverScrollableScrollPhysics(),
+              itemCount: snapshot.data.length,
+              itemBuilder: (context,index){
+                return Domaindata(Domain.fromJson(snapshot.data[index]), context);
+              });
         }
         else{
-          if (snapshot.hasData){
-            return GridView.builder(
-              padding: EdgeInsets.zero,
-                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 4,
-                  crossAxisSpacing: 10,
-                  childAspectRatio: 10/10,
-                  mainAxisSpacing: 10
-            ),
-                // physics: NeverScrollableScrollPhysics(),
-                itemCount: snapshot.data.length,
-                itemBuilder: (context,index){
-                  return Domaindata(Domain.fromJson(snapshot.data[index]), context);
-                });
-          }
-          else{
-            return Center(
-              child: Text("No data"),
-            );
-          }
+          return Center(
+            child: Text("No data"),
+          );
         }
-      },
-    ),
+      }
+    },
   );
 }
 

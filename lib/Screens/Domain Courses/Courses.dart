@@ -39,7 +39,8 @@ class _coursesState extends State<courses> {
             color: Colors.black,
           ),
           onPressed: () {
-            Navigator.pushNamed(context, '/navigation');
+            Navigator.pop(context);
+            // Navigator.pushNamed(context, '/navigation');
           },
         ),
       ),
