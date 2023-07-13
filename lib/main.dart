@@ -8,12 +8,18 @@ import 'package:collegevidya/Screens/verifyUniversity%20.dart';
 import 'package:flutter/material.dart';
 import 'Screens/Suggestin2min.dart';
 
-void main(){
+void main() {
+  runApp(MyApp());
+}
 
-  runApp(
-    MaterialApp(
+class MyApp extends StatelessWidget {
+  final String jwt= ''; // Set the JWT value here
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: Splash(),
+      home: Splash(jwt: jwt),
       routes: {
         "/signup": (context) => signup(),
         "/signin": (context) => signin(),
@@ -21,7 +27,7 @@ void main(){
         '/addpost': (context) => addpost(),
         '/verifyuniversity': (context) => verifyuniversity(),
         '/experts' :(context) => experts(),
-      },
-    ),
-  );
+      },// Pass the jwt value to the Splash widget
+    );
+  }
 }
