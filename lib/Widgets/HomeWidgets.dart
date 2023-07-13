@@ -57,12 +57,13 @@ Widget universitylogo(Unilistmodel data,BuildContext context){
 
 Widget experts(Experts data, BuildContext context){
   return Container(
-    // color: Colors.white,
-    height: 120,
+    height: 200,
     width: 150,
     decoration: BoxDecoration(
       color: Colors.white, 
-      borderRadius: BorderRadius.all(Radius.circular(8))
+      borderRadius: BorderRadius.all(Radius.circular(8)),
+      boxShadow: [BoxShadow(blurRadius: 2.5,color: Colors.black12)]
+
     ),
 
     child: Padding(
@@ -70,12 +71,64 @@ Widget experts(Experts data, BuildContext context){
       child: Column(
         children: [
           Stack(
+
             children: [
-              Image.network('${data.profileImage}',height: 80, fit:BoxFit.fill)
+              ClipRRect(
+                borderRadius: BorderRadius.all(Radius.circular(8)),
+                child: Image.network('${data.profileImage}',
+                width: double.maxFinite,
+                height: 110,
+                fit: BoxFit.fill,),
+              ),
+
+              Positioned(
+                top:4,
+                  right: 4,
+                  child: Container(
+                    height: 20,
+                    width: 40,
+                    decoration: BoxDecoration(
+                      color: Colors.green[400],
+                      borderRadius: BorderRadius.all(Radius.circular(8))
+                    ),
+                    child:
+                    Center(child:
+                    Row(
+                      children: [
+                        Text(' ${data.rating}',style: TextStyle(color: Colors.white),),
+                        Icon(Icons.star,size: 15,color: Colors.white,)
+                      ],
+                    )
+                    )
+                  )),
+
+              Positioned(
+                bottom: 0,
+                child: Container(
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.all(Radius.circular(10)),
+                    color: Colors.blue[700]
+                  ),
+                  width: 120,
+                  height: 22,
+                  child: Center(child: Text('Experience:  ${data.experience} yrs',style: TextStyle(color: Colors.white),)),
+                ),
+              )
             ],
           ),
-          Text('${data.name}'),
-          Text('${data.designation}')
+          SizedBox(height: 15,),
+
+          Align(
+            alignment: Alignment.centerLeft,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text('${data.name}',style: TextStyle(fontWeight: FontWeight.bold),),
+                Text('${data.designation}')
+              ],
+            ),
+          )
+
         ],
       ),
     ),

@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
+
 class signin extends StatefulWidget {
   const signin({Key? key}) : super(key: key);
 
@@ -23,6 +24,7 @@ class _signinState extends State<signin> {
     mobileNumberController.dispose();
     super.dispose();
   }
+
 
   @override
   Widget build(BuildContext context) {
@@ -170,13 +172,15 @@ class _signinState extends State<signin> {
                               fontSize: 20),
                         ),
                         onPressed: () async {
+
                           String mobile = mobileNumberController.text;
                           String otp = await generateOTP(mobile);
+
                           Navigator.push(
                               context,
                               MaterialPageRoute(
                                   builder: (context) =>
-                                      OTPVerificationPage(mobile: mobile)));
+                                      OTPVerificationPage(mobile: mobile,)));
                         },
                         style: ElevatedButton.styleFrom(
                             backgroundColor: Color(0xff1043E9),

@@ -105,13 +105,14 @@ Widget expertsslider(Future future){
                     return experts(Experts.fromJson(snapshot.data[index]), context);
                   },
                   options: CarouselOptions(
-                    viewportFraction: .37,
-                    height: 150,
+                    viewportFraction: .4,
+                    height: 180,
                     autoPlay: true,
-                    autoPlayInterval: Duration(seconds: 3),
+                    autoPlayInterval: Duration(seconds: 4),
                     enlargeCenterPage: true,
-                    enlargeStrategy: CenterPageEnlargeStrategy.height,
-                    pageSnapping: false,
+                    enlargeFactor: 0.1,
+                    // autoPlayCurve: Curves.easeIn,
+
                   ));
 
             }
