@@ -1,6 +1,6 @@
 # collegevidya
 
-A new Flutter project.
+A mobile app that provided its users with a smooth user experience, straightforward navigation, and vital functionality. The app titled “College Vidya” aims to revolutionize the user experience from a website to mobile application. In a mobile application, it’s a lot convenient for user to handle their own account. 
 
 ## Getting Started
 
@@ -14,3 +14,8 @@ A few resources to get you started if this is your first Flutter project:
 For help getting started with Flutter development, view the
 [online documentation](https://docs.flutter.dev/), which offers tutorials,
 samples, guidance on mobile development, and a full API reference.
+
+## Outcomes
+![Creative Business Presentation](https://github.com/kriti-banka/college-vidya-app-flutter/assets/72350827/f4a74b5f-b0df-492f-a92a-ddad32a60bc5)
+
+
